@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fresh_shop/widgets/color.dart';
 
 Widget customAppBar() {
   return SafeArea(
@@ -12,7 +13,7 @@ Widget customAppBar() {
           Text(
             'Fresh',
             style: TextStyle(
-                color: Colors.black,
+                color: black,
                 fontSize: 28,
               fontWeight: FontWeight.w700
             ),
@@ -22,7 +23,7 @@ Widget customAppBar() {
               onPressed: () {},
               icon: Icon(
                 Icons.shopping_cart_outlined,
-                color: Colors.black,
+                color: black,
                 size: 30,
               ))
 

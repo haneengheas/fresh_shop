@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:fresh_shop/widgets/color.dart';
+import 'package:fresh_shop/widgets/list_of_menu.dart';
+import 'package:fresh_shop/views/home_page/menu.dart';
 
 class Category extends StatefulWidget {
   const Category({Key? key}) : super(key: key);
@@ -9,7 +12,7 @@ class Category extends StatefulWidget {
 }
 
 class _CategoryState extends State<Category> {
-  int page_index = 0;
+  int pageIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +22,8 @@ class _CategoryState extends State<Category> {
         GestureDetector(
           onTap: () {
             setState(() {
-              page_index = 1;
+              pageIndex = 1;
+              Items(mylist: menu[0]);
             });
           },
           child: Container(
@@ -27,32 +31,28 @@ class _CategoryState extends State<Category> {
             height: 120,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
-                color: page_index == 1
-                    ? Color.fromRGBO(250, 88, 101, 1)
-                    : Colors.white,
+                color: pageIndex == 1 ? pink : white,
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.grey,
-                    blurRadius: 5,
+                    color: gray,
+                    blurRadius: 7,
                   )
                 ]),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 ImageIcon(
-                  AssetImage('assets/coffee-cup.png'),
-                  size: 65,
-                  color: page_index==1?  Colors.white:Colors.black,
-
+                  AssetImage('assets/coffee-cup1.png'),
+                  size: 70,
+                  color: pageIndex == 1 ? white : black,
                 ),
                 Text(
                   'Coffee',
                   style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w700,
-                      color: page_index == 1
-                          ? Colors.white
-                          : Colors.grey,),
+                    fontSize: 18,
+                    fontWeight: FontWeight.w700,
+                    color: pageIndex == 1 ? white : gray,
+                  ),
                 ),
               ],
             ),
@@ -61,7 +61,7 @@ class _CategoryState extends State<Category> {
         GestureDetector(
           onTap: () {
             setState(() {
-              page_index=2;
+              pageIndex = 2;
             });
           },
           child: Container(
@@ -69,11 +69,10 @@ class _CategoryState extends State<Category> {
             height: 120,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
-                color: page_index==2?  Color.fromRGBO(250, 88, 101,1):Colors.white,
-
-                  boxShadow: [
+                color: pageIndex == 2 ? pink : white,
+                boxShadow: [
                   BoxShadow(
-                    color: Colors.grey,
+                    color: gray,
                     blurRadius: 5,
                   )
                 ]),
@@ -83,23 +82,24 @@ class _CategoryState extends State<Category> {
                 ImageIcon(
                   AssetImage('assets/tea-cup.png'),
                   size: 65,
-                  color: page_index==2?  Colors.white:Colors.black,
+                  color: pageIndex == 2 ? white : black,
                 ),
                 Text(
                   'Tea',
                   style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w700,
-                    color: page_index==2?  Colors.white:Colors.grey,),
+                    fontSize: 18,
+                    fontWeight: FontWeight.w700,
+                    color: pageIndex == 2 ? white : gray,
+                  ),
                 ),
               ],
             ),
           ),
         ),
         GestureDetector(
-          onTap: (){
+          onTap: () {
             setState(() {
-              page_index=3;
+              pageIndex = 3;
             });
           },
           child: Container(
@@ -107,10 +107,10 @@ class _CategoryState extends State<Category> {
             height: 120,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
-                color: page_index==3?  Color.fromRGBO(250, 88, 101,1):Colors.white,
+                color: pageIndex == 3 ? pink : white,
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.grey,
+                    color: gray,
                     blurRadius: 5,
                   )
                 ]),
@@ -120,14 +120,14 @@ class _CategoryState extends State<Category> {
                 ImageIcon(
                   AssetImage('assets/ice-cream.png'),
                   size: 65,
-                  color: page_index==3?  Colors.white:Colors.black,
+                  color: pageIndex == 3 ? white : black,
                 ),
                 Text(
                   'Cream',
                   style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w700,
-                    color: page_index==3?  Colors.white:Colors.grey,
+                    fontSize: 18,
+                    fontWeight: FontWeight.w700,
+                    color: pageIndex == 3 ? white : gray,
                   ),
                 ),
               ],
@@ -135,9 +135,9 @@ class _CategoryState extends State<Category> {
           ),
         ),
         GestureDetector(
-          onTap: (){
+          onTap: () {
             setState(() {
-              page_index=4;
+              pageIndex = 4;
             });
           },
           child: Container(
@@ -145,12 +145,10 @@ class _CategoryState extends State<Category> {
             height: 120,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
-                color: page_index == 4
-                    ? Color.fromRGBO(250, 88, 101, 1)
-                    : Colors.white,
+                color: pageIndex == 4 ? pink : white,
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.grey,
+                    color: gray,
                     blurRadius: 5,
                   )
                 ]),
@@ -160,17 +158,13 @@ class _CategoryState extends State<Category> {
                 ImageIcon(
                   AssetImage('assets/frappe.png'),
                   size: 65,
-                  color: page_index == 4
-                      ? Colors.white
-                      : Colors.black,
+                  color: pageIndex == 4 ? white : black,
                 ),
                 Text(
                   'Freeze',
                   style: TextStyle(
                     fontSize: 18,
-                    color: page_index == 4
-                        ? Colors.white
-                        : Colors.grey,
+                    color: pageIndex == 4 ? white : gray,
                     fontWeight: FontWeight.w700,
                   ),
                 ),

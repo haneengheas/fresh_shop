@@ -12,17 +12,12 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: PreferredSize(
           preferredSize: const Size.fromHeight(100), child: customAppBar()),
-      body: Column(
+      //TODO:
+      body: ListView(
         children: [
-          Expanded(
-              flex: 1,
-              child: Column(
-                children: [
-                  Offers(),
-                  Category(),
-                  //Items(),
-                ],
-              ))
+          Offers(),
+          Category(),
+          //Items(),
         ],
       ),
     );

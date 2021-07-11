@@ -4,6 +4,8 @@ import 'package:fresh_shop/widgets/color.dart';
 import 'package:fresh_shop/widgets/list_of_menu.dart';
 import 'package:fresh_shop/views/home_page/menu.dart';
 
+import 'cons_menu.dart';
+
 class Category extends StatefulWidget {
   const Category({Key? key}) : super(key: key);
 
@@ -12,166 +14,185 @@ class Category extends StatefulWidget {
 }
 
 class _CategoryState extends State<Category> {
-  int pageIndex = 0;
+  //TODO:
+  int pageIndex = 1;
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    //TODO:
+    return Column(
       children: [
-        GestureDetector(
-          onTap: () {
-            setState(() {
-              pageIndex = 1;
-              Items(mylist: menu[0]);
-            });
-          },
-          child: Container(
-            width: 85,
-            height: 120,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15),
-                color: pageIndex == 1 ? pink : white,
-                boxShadow: [
-                  BoxShadow(
-                    color: gray,
-                    blurRadius: 7,
-                  )
-                ]),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                ImageIcon(
-                  AssetImage('assets/coffee-cup1.png'),
-                  size: 70,
-                  color: pageIndex == 1 ? white : black,
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            GestureDetector(
+              onTap: () {
+                setState(() {
+                  pageIndex = 1;
+                });
+              },
+              child: Container(
+                width: 85,
+                height: 120,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15),
+                    color: pageIndex == 1 ? pink : white,
+                    boxShadow: [
+                      BoxShadow(
+                        color: gray,
+                        blurRadius: 7,
+                      )
+                    ]),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    ImageIcon(
+                      AssetImage('assets/coffee-cup1.png'),
+                      size: 70,
+                      color: pageIndex == 1 ? white : black,
+                    ),
+                    Text(
+                      'Coffee',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w700,
+                        color: pageIndex == 1 ? white : gray,
+                      ),
+                    ),
+                  ],
                 ),
-                Text(
-                  'Coffee',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w700,
-                    color: pageIndex == 1 ? white : gray,
-                  ),
-                ),
-              ],
+              ),
             ),
-          ),
+            GestureDetector(
+              onTap: () {
+                setState(() {
+                  pageIndex = 2;
+                });
+              },
+              child: Container(
+                width: 85,
+                height: 120,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15),
+                    color: pageIndex == 2 ? pink : white,
+                    boxShadow: [
+                      BoxShadow(
+                        color: gray,
+                        blurRadius: 5,
+                      )
+                    ]),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    ImageIcon(
+                      AssetImage('assets/tea-cup.png'),
+                      size: 65,
+                      color: pageIndex == 2 ? white : black,
+                    ),
+                    Text(
+                      'Tea',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w700,
+                        color: pageIndex == 2 ? white : gray,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            GestureDetector(
+              onTap: () {
+                setState(() {
+                  pageIndex = 3;
+                });
+              },
+              child: Container(
+                width: 85,
+                height: 120,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15),
+                    color: pageIndex == 3 ? pink : white,
+                    boxShadow: [
+                      BoxShadow(
+                        color: gray,
+                        blurRadius: 5,
+                      )
+                    ]),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    ImageIcon(
+                      AssetImage('assets/ice-cream.png'),
+                      size: 65,
+                      color: pageIndex == 3 ? white : black,
+                    ),
+                    Text(
+                      'Cream',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w700,
+                        color: pageIndex == 3 ? white : gray,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            GestureDetector(
+              onTap: () {
+                setState(() {
+                  pageIndex = 4;
+                });
+              },
+              child: Container(
+                width: 85,
+                height: 120,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15),
+                    color: pageIndex == 4 ? pink : white,
+                    boxShadow: [
+                      BoxShadow(
+                        color: gray,
+                        blurRadius: 5,
+                      )
+                    ]),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    ImageIcon(
+                      AssetImage('assets/frappe.png'),
+                      size: 65,
+                      color: pageIndex == 4 ? white : black,
+                    ),
+                    Text(
+                      'Freeze',
+                      style: TextStyle(
+                        fontSize: 18,
+                        color: pageIndex == 4 ? white : gray,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            )
+          ],
         ),
-        GestureDetector(
-          onTap: () {
-            setState(() {
-              pageIndex = 2;
-            });
+        ListView.builder(
+          shrinkWrap: true,
+          physics: NeverScrollableScrollPhysics(),
+          padding: EdgeInsets.all(10),
+          itemCount: menu[pageIndex].length,
+          itemBuilder: (_, index) {
+            return ConMenu(
+                image: menu[pageIndex][index][0],
+                color: menu[pageIndex][index][1],
+                name: menu[pageIndex][index][2],
+                subtitle:menu[pageIndex][index][3],
+                price: menu[pageIndex][index][4]);
           },
-          child: Container(
-            width: 85,
-            height: 120,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15),
-                color: pageIndex == 2 ? pink : white,
-                boxShadow: [
-                  BoxShadow(
-                    color: gray,
-                    blurRadius: 5,
-                  )
-                ]),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                ImageIcon(
-                  AssetImage('assets/tea-cup.png'),
-                  size: 65,
-                  color: pageIndex == 2 ? white : black,
-                ),
-                Text(
-                  'Tea',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w700,
-                    color: pageIndex == 2 ? white : gray,
-                  ),
-                ),
-              ],
-            ),
-          ),
         ),
-        GestureDetector(
-          onTap: () {
-            setState(() {
-              pageIndex = 3;
-            });
-          },
-          child: Container(
-            width: 85,
-            height: 120,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15),
-                color: pageIndex == 3 ? pink : white,
-                boxShadow: [
-                  BoxShadow(
-                    color: gray,
-                    blurRadius: 5,
-                  )
-                ]),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                ImageIcon(
-                  AssetImage('assets/ice-cream.png'),
-                  size: 65,
-                  color: pageIndex == 3 ? white : black,
-                ),
-                Text(
-                  'Cream',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w700,
-                    color: pageIndex == 3 ? white : gray,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-        GestureDetector(
-          onTap: () {
-            setState(() {
-              pageIndex = 4;
-            });
-          },
-          child: Container(
-            width: 85,
-            height: 120,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15),
-                color: pageIndex == 4 ? pink : white,
-                boxShadow: [
-                  BoxShadow(
-                    color: gray,
-                    blurRadius: 5,
-                  )
-                ]),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                ImageIcon(
-                  AssetImage('assets/frappe.png'),
-                  size: 65,
-                  color: pageIndex == 4 ? white : black,
-                ),
-                Text(
-                  'Freeze',
-                  style: TextStyle(
-                    fontSize: 18,
-                    color: pageIndex == 4 ? white : gray,
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        )
       ],
     );
   }
